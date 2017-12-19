@@ -1,0 +1,32 @@
+server:
+  port: 50004
+
+spring:
+  application:
+    name: task-manager-service
+  datasource:
+    tomcat: 
+      initial-size: 1
+    url: jdbc:oracle:thin:@octocat.c21x4yygth5e.us-east-2.rds.amazonaws.com:1521:ORCL
+    username: p3task
+    password: p4ssw0rd
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://18.221.160.13:8761/eureka
+
+security:
+ oauth2:
+   resource:
+     accessTokenUri: http://localhost:8765/user-service/oauth/check_token
+     userAuthorizationUri: http://localhost:8765/user-service/oauth/authorize
+     jwt:
+       keyUri: http://localhost:8765/user-service/oauth/token_key

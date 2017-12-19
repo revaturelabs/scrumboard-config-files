@@ -1,0 +1,49 @@
+server:
+  port: 50002
+
+spring:
+  application:
+    name: chart-service
+  datasource:
+    tomcat: 
+      initial-size: 1
+    url: jdbc:oracle:thin:@octocat.c21x4yygth5e.us-east-2.rds.amazonaws.com:1521:ORCL
+    username: p3chart
+    password: p4ssw0rd
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+  rabbitmq:
+    host: localhost
+    password: guest
+    username: guest
+    port: 5672
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: boardmessage
+          contentType: application/json
+  integration:
+    readOnly:
+      headers: contentType
+
+rest-template-urls:
+  story-service: story-manager-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    serviceUrl:
+#      defaultZone: http://18.221.160.13:8761/eureka
+
+security:
+ oauth2:
+   resource:
+     accessTokenUri: http://localhost:8765/user-service/oauth/check_token
+     userAuthorizationUri: http://localhost:8765/user-service/oauth/authorize
+     jwt:
+       keyUri: http://localhost:8765/user-service/oauth/token_key
