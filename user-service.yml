@@ -7,7 +7,7 @@ spring:
   datasource:
     tomcat: 
       initial-size: 1
-    url: jdbc:oracle:thin:@scrumboard-microservices.chueiwozbnfz.us-east-1.rds.amazonaws.com:1521:xe
+    url: jdbc:oracle:thin:@scrumboard-microservices.chueiwozbnfz.us-east-1.rds.amazonaws.com:1521:ORCL
     username: p3user
     password: p4ssw0rd
     driver-class-name: oracle.jdbc.driver.OracleDriver
